@@ -66,13 +66,8 @@ class FaceNamingViewController: UIViewController, AVAudioRecorderDelegate {
     //MARK: Functions
     /* Function to start testing */
     func startTesting() {
-        recordImage.isHidden = false
-        recordImage.pulse()
-        nextButton.setTitle("Recording...", for: .normal)
-        nextButton.isHidden = false
-        nextButton.isEnabled = false
+        setUIForTesting()
         faceImage.image = imageArray[currImage].image
-        recordImage.isHidden = false
         recordImage.pulse()
         startTestTimer()
     }
@@ -116,27 +111,16 @@ class FaceNamingViewController: UIViewController, AVAudioRecorderDelegate {
         } else if numTimesPreviewPresented == 2 {
             currImage = 0
             stopTimer()
-            centerLabel.isHidden = true
-            faceImage.image = nil
-            previewComplete = true
-            nextButton.setTitle("Start Test", for: .normal)
-            nextButton.isHidden = false
+            setUIForPreTesting()
         }
     }
     
     func testing() {
         if currImage == self.imageArray.count - 1 {
-            recordImage.isHidden = true
             recordImage.removePulse()
             endRecording()
-            recordImage.removePulse()
+            setUIForPostTesting()
             testComplete = true
-            recordButton.setTitle("Exercise Complete", for: .normal)
-            recordButton.isEnabled = false
-            recordButton.isHidden = false
-            nextButton.setTitle("Next Test", for: .normal)
-            nextButton.isEnabled = true
-            nextButton.isHidden = false
         }
         if currImage < self.imageArray.count - 1 {
             currImage += 1
@@ -146,11 +130,7 @@ class FaceNamingViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     func resetTest() {
-        recordButton.setTitle("Begin Session", for: .normal)
-        recordButton.isEnabled = true
-        nextButton.isHidden = true
-        centerLabel.isHidden = true
-        recordImage.isHidden = true
+        resetUI()
         previewComplete = false
         testComplete = false
         numTimesPreviewPresented = 0
@@ -178,6 +158,46 @@ class FaceNamingViewController: UIViewController, AVAudioRecorderDelegate {
         FileUploadManager.fileUpload(filePath: AudioRecordingManager.getURL(fileName: audioFileName).absoluteString,
                                      filename: audioFileName,
                                      view: self)
+    }
+    
+    func resetUI() {
+        recordButton.setTitle("Begin Session", for: .normal)
+        recordButton.isEnabled = true
+        nextButton.isHidden = true
+        centerLabel.isHidden = true
+        recordImage.isHidden = true
+    }
+    
+    func setUIForPreview() {
+        centerLabel.isHidden = false
+        recordButton.isHidden = true
+    }
+    
+    func setUIForPreTesting() {
+        centerLabel.isHidden = true
+        faceImage.image = nil
+        previewComplete = true
+        nextButton.setTitle("Start Test", for: .normal)
+        nextButton.isHidden = false
+    }
+    
+    func setUIForTesting() {
+        recordImage.isHidden = false
+        recordImage.pulse()
+        nextButton.setTitle("Recording...", for: .normal)
+        nextButton.isHidden = false
+        nextButton.isEnabled = false
+        recordImage.isHidden = false
+    }
+    
+    func setUIForPostTesting() {
+        recordImage.isHidden = true
+        recordButton.setTitle("Exercise Complete", for: .normal)
+        recordButton.isEnabled = false
+        recordButton.isHidden = false
+        nextButton.setTitle("Next Test", for: .normal)
+        nextButton.isEnabled = true
+        nextButton.isHidden = false
     }
 
 }

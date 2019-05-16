@@ -18,7 +18,12 @@ class FileUploadManager {
             uploadRequest?.fileName = filename
             uploadRequest?.perform(progress: nil, completion: { (file, error) in
                 if let _ = file {
-                    //delete file from device
+                    let fileURL = AudioRecordingManager.getURL(fileName: filename)
+                    do {
+                        try FileManager.default.removeItem(at: fileURL)
+                    } catch {
+                        print("file failed to delete")
+                    }
                 } else {
                     let errorMessage = UIAlertController(title: "Error",
                                                          message: "File Upload failed: this file can be uploaded from the main menu",

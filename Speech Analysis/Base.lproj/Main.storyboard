@@ -498,6 +498,41 @@
             </objects>
             <point key="canvasLocation" x="2013" y="947"/>
         </scene>
+        <!--Unuploaded Files Table View Controller-->
+        <scene sceneID="S96-hR-yZw">
+            <objects>
+                <tableViewController storyboardIdentifier="UnUploadedFiles" useStoryboardIdentifierAsRestorationIdentifier="YES" id="oWU-uk-Rbs" customClass="UnuploadedFilesTableViewController" customModule="Speech_Analysis" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OSg-12-CVp">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="sgu-yg-n7t">
+                                <rect key="frame" x="0.0" y="28" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sgu-yg-n7t" id="cWR-vT-Hdn">
+                                    <rect key="frame" x="0.0" y="0.0" width="768" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="oWU-uk-Rbs" id="q97-ip-mFc"/>
+                            <outlet property="delegate" destination="oWU-uk-Rbs" id="dD9-4s-vrC"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="RRM-Nc-I27">
+                        <barButtonItem key="rightBarButtonItem" title="Upload" id="ApC-97-liy">
+                            <connections>
+                                <action selector="uploadFiles:" destination="oWU-uk-Rbs" id="hl2-Zl-6Qj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0ur-yN-6Oq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1151" y="-613"/>
+        </scene>
         <!--Naming Instructions-->
         <scene sceneID="LeO-F0-ecg">
             <objects>

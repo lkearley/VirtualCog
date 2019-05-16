@@ -18,11 +18,12 @@ class AudioRecordingManager {
     static func setUpRecorder(view: AVAudioRecorderDelegate, fileName: String) ->  AVAudioRecorder? {
         // Record settings
         var recorder : AVAudioRecorder?
-        let recordingSettings = [AVFormatIDKey: kAudioFormatAppleLossless,
-                                 AVEncoderAudioQualityKey: AVAudioQuality.max.rawValue,
-                                 AVEncoderBitRateKey: 256000,
-                                 AVNumberOfChannelsKey: 2,
-                                 AVSampleRateKey: 44100.0 ] as [String : Any]
+        let recordingSettings = [
+            AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
+            AVSampleRateKey: 12000,
+            AVNumberOfChannelsKey: 1,
+            AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
+        ]
     
         do {
             recorder = try AVAudioRecorder(url: getURL(fileName: fileName),
@@ -43,23 +44,16 @@ class AudioRecordingManager {
     /*
      Function to grab the path to the audio recording
      */
-    static func getCacheDirectory() -> String {
-        // Paths for where audio files are held represented as an array of strings
-        // Will change to dropbox later
-        let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory,
-                                                        FileManager.SearchPathDomainMask.userDomainMask,
-                                                        true)
-    
-        // Return first path
-        return paths[0]
+    static func getDocumentsDirectory() -> URL {
+        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        return path
     }
 
     /*
-     Function to convert path to recording to a URL with file type as specified by self.audioFileName
+     Function to convert path to recording to a URL with file type as specified by audioFileName
      */
     static func getURL(fileName: String) -> URL {
-        let path = getCacheDirectory().appending(fileName)
-        let filePath = URL(fileURLWithPath: path)
-        return filePath
+        let path = getDocumentsDirectory().appendingPathComponent(fileName)
+        return path
     }
 }

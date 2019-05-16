@@ -40,6 +40,8 @@ class SideMenuViewController: UITableViewController {
             loginToBox()
         } else if cellNumber == 1 {
             changePatientID()
+        } else if cellNumber == 2 {
+            goToUnUploadedFiles()
         }
     }
     
@@ -70,5 +72,13 @@ class SideMenuViewController: UITableViewController {
         alert.addAction(okayAction)
         alert.addAction(cancelAction)
         self.present(alert, animated: true)
+    }
+    
+    func goToUnUploadedFiles() {
+        guard let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "UnUploadedFiles") as? UnuploadedFilesTableViewController else {
+                print("Could not instantiate view controller")
+                return
+        }
+        self.navigationController?.pushViewController(vc, animated:true)
     }
 }

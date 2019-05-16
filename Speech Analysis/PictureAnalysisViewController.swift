@@ -51,12 +51,7 @@ class PictureAnalysisViewController: UIViewController, AVAudioRecorderDelegate, 
         recorder.record() // Start recording
         ImageView.image = imageArray[currImage]
         setZoomScale(image: imageArray[currImage])
-        sender.isHidden = true
-        sender.isEnabled = false
-        nextButton.setTitle("Recording...", for: .normal)
-        nextButton.isEnabled = false
-        nextButton.isHidden = false
-        recordImage.isHidden = false
+        setUIForTesting()
         recordImage.pulse()
         // Set up timer to limit length of active recording session
         startImageTimer()
@@ -82,14 +77,7 @@ class PictureAnalysisViewController: UIViewController, AVAudioRecorderDelegate, 
     @objc func endRecording() {
         if currImage == imageArray.count - 1 {
             recordImage.removePulse()
-            ImageView.image = nil
-            recordImage.isHidden = true
-            scrollView.isHidden = true
-            nextButton.setTitle("Next Test", for: .normal)
-            nextButton.isEnabled = true
-            recordButton.isEnabled = false
-            recordButton.setTitle("Exercise Complete", for: .normal)
-            recordButton.isHidden = false
+            setUIForPostTesting()
             isTestDone = true
             imageTimer.invalidate()
             recorder.stop()
@@ -131,6 +119,33 @@ class PictureAnalysisViewController: UIViewController, AVAudioRecorderDelegate, 
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return ImageView
+    }
+    
+    func resetUI() {
+        recordImage.isHidden = true
+        recordButton.isEnabled = true
+        recordButton.setTitle("Begin Session", for: .normal)
+        scrollView.isHidden = false
+    }
+    
+    func setUIForTesting() {
+        recordButton.isHidden = true
+        recordButton.isEnabled = false
+        nextButton.setTitle("Recording...", for: .normal)
+        nextButton.isEnabled = false
+        nextButton.isHidden = false
+        recordImage.isHidden = false
+    }
+    
+    func setUIForPostTesting() {
+        ImageView.image = nil
+        recordImage.isHidden = true
+        scrollView.isHidden = true
+        nextButton.setTitle("Next Test", for: .normal)
+        nextButton.isEnabled = true
+        recordButton.isEnabled = false
+        recordButton.setTitle("Exercise Complete", for: .normal)
+        recordButton.isHidden = false
     }
     
 }

@@ -51,12 +51,7 @@ class DelayFaceRecallViewController: UIViewController, AVAudioRecorderDelegate {
     
     //MARK: Actions
     @IBAction func startSession(_ sender: Any) {
-        recordButton.isHidden = true
-        recordButton.isEnabled = false
-        finishButton.setTitle("Recording...", for: .normal)
-        finishButton.isEnabled = false
-        finishButton.isHidden = false
-        recordImage.isHidden = false
+        setUIForTesting()
         recordImage.pulse()
         faceImage.image = imageArray[currImage].image
         startTestTimer()
@@ -78,11 +73,7 @@ class DelayFaceRecallViewController: UIViewController, AVAudioRecorderDelegate {
         if currImage == self.imageArray.count - 1 {
             endRecording()
             recordImage.removePulse()
-            recordImage.isHidden = true
-            recordButton.setTitle("Exercise Complete", for: .normal)
-            recordButton.isHidden = false
-            finishButton.setTitle("Back To Menu", for: .normal)
-            finishButton.isEnabled = true
+            setUIForPostTesting()
         }
         if currImage < self.imageArray.count - 1 {
             currImage += 1
@@ -123,6 +114,23 @@ class DelayFaceRecallViewController: UIViewController, AVAudioRecorderDelegate {
         recordImage.isHidden = true
         finishButton.isHidden = true
         recorder = AudioRecordingManager.setUpRecorder(view: self, fileName: audioFileName)
+    }
+    
+    func setUIForTesting() {
+        recordButton.isHidden = true
+        recordButton.isEnabled = false
+        finishButton.setTitle("Recording...", for: .normal)
+        finishButton.isEnabled = false
+        finishButton.isHidden = false
+        recordImage.isHidden = false
+    }
+    
+    func setUIForPostTesting() {
+        recordImage.isHidden = true
+        recordButton.setTitle("Exercise Complete", for: .normal)
+        recordButton.isHidden = false
+        finishButton.setTitle("Back To Menu", for: .normal)
+        finishButton.isEnabled = true
     }
 }
 

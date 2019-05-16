@@ -21,6 +21,7 @@
 		A66AE4F9219E0D2700961213 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66AE4F8219E0D2700961213 /* SideMenuViewController.swift */; };
 		A6A26CCD22754C5100950920 /* DelayFaceRecallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A26CCC22754C5000950920 /* DelayFaceRecallViewController.swift */; };
 		A6A26CCF22755A9B00950920 /* BoxContentSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A26CCE22755A9B00950920 /* BoxContentSDK.framework */; };
+		A6B8C1B4228D327300B3D3E1 /* UnuploadedFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B8C1B3228D327300B3D3E1 /* UnuploadedFileViewController.swift */; };
 		A6C209BF227AB4200093A028 /* BoxContentSDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A6A26CCE22755A9B00950920 /* BoxContentSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A6CF250321BF16F100D98FA8 /* PictureAnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CF250221BF16F100D98FA8 /* PictureAnalysisViewController.swift */; };
 		A6DD51E62280CBD200C23E3B /* SideMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6DD51E52280CBD200C23E3B /* SideMenu.framework */; };
@@ -62,6 +63,7 @@
 		A66AE4F8219E0D2700961213 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		A6A26CCC22754C5000950920 /* DelayFaceRecallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayFaceRecallViewController.swift; sourceTree = "<group>"; };
 		A6A26CCE22755A9B00950920 /* BoxContentSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BoxContentSDK.framework; path = Carthage/Build/iOS/BoxContentSDK.framework; sourceTree = "<group>"; };
+		A6B8C1B3228D327300B3D3E1 /* UnuploadedFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnuploadedFileViewController.swift; sourceTree = "<group>"; };
 		A6CF250221BF16F100D98FA8 /* PictureAnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureAnalysisViewController.swift; sourceTree = "<group>"; };
 		A6DD51E52280CBD200C23E3B /* SideMenu.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SideMenu.framework; path = Carthage/Build/iOS/SideMenu.framework; sourceTree = "<group>"; };
 		A6DD51E922860BCE00C23E3B /* AudioRecordingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecordingManager.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				A632FE49221143CD000E6370 /* NamingInstructionsViewController.swift */,
 				1037392B21AB48A1009E4FE4 /* FaceNameInstructionViewController.swift */,
 				A632FE472211433E000E6370 /* PictureScanInstructionsViewController.swift */,
+				A6B8C1B3228D327300B3D3E1 /* UnuploadedFileViewController.swift */,
 				A65614A2218D4CF000472445 /* Main.storyboard */,
 				A65614A5218D4CF300472445 /* Assets.xcassets */,
 				A65614A7218D4CF300472445 /* LaunchScreen.storyboard */,
@@ -208,6 +211,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6B8C1B4228D327300B3D3E1 /* UnuploadedFileViewController.swift in Sources */,
 				A6DD51F02286E24700C23E3B /* UIImageView+Pulse.swift in Sources */,
 				A65614A1218D4CF000472445 /* MainMenuViewController.swift in Sources */,
 				A66AE4F9219E0D2700961213 /* SideMenuViewController.swift in Sources */,
